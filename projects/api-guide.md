@@ -71,8 +71,6 @@ fetch("https://api.quotable.io/random?tags=literature")
 Want to see a live quote example using the instructions from this guide?
 👉 [Click here to view it in action](quote-demo.html)
 
-Want to see a live quote example using the instructions from this guide? 👉 [Click here to view it in action](projects/quote-demo.html)
-
 <br>
 
 <iframe 
