@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Random Quote</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      padding: 2em;
+      text-align: center;
+    }
+    #quote-box {
+      background: white;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: inline-block;
+      max-width: 600px;
+    }
+    #quote {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+    #author {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-  <h1>Random Quote</h1>
-  <blockquote id="quote">Loading...</blockquote>
-  <footer id="author"></footer>
+  <div id="quote-box">
+    <div id="quote">Loading...</div>
+    <div id="author"></div>
+  </div>
 
   <script>
     async function fetchQuote() {
-      const url = "https://thingproxy.freeboard.io/fetch/https://api.quotable.io/random";
-
       try {
-        const res = await fetch(url);
-        const data = await res.json();
-        document.getElementById("quote").textContent = `"${data.content}"`;
-        document.getElementById("author").textContent = `— ${data.author}`;
+        const response = await fetch('https://api.quotable.io/random');
+        const data = await response.json();
+        document.getElementById('quote').textContent = `"${data.content}"`;
+        document.getElementById('author').textContent = `– ${data.author}`;
       } catch (err) {
-        document.getElementById("quote").textContent = "Failed to load quote.";
-        document.getElementById("author").textContent = "";
-        console.error("Fetch error:", err);
+        document.getElementById('quote').textContent = 'Failed to load quote.';
+        document.getElementById('author').textContent = '';
       }
     }
 
-    fetchQuote();
-    setInterval(fetchQuote, 10000); // update every 10s
+    fetchQuote(); // initial load
+    setInterval(fetchQuote, 30000); // refresh every 30 seconds
   </script>
 </body>
 </html>
