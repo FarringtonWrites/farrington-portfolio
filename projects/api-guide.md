@@ -1,3 +1,5 @@
+[Home](../index.md) | [API Guide](api-guide.md) | [Software Manual](software-manual.md) | [FAQ](faq.md)
+
 # API Basics
 
 ## What is an API?
