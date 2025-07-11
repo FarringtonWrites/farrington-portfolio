@@ -3,56 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Random Quote</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f5f5f5;
-      padding: 2rem;
-      text-align: center;
-    }
-    #quote-box {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    #quote {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    #author {
-      font-size: 1rem;
-      color: #555;
-    }
-  </style>
 </head>
 <body>
+  <h1>Random Quote</h1>
+  <blockquote id="quote">Loading...</blockquote>
+  <footer id="author"></footer>
 
-<div id="quote-box">
-  <div id="quote">Loading quote...</div>
-  <div id="author"></div>
-</div>
+  <script>
+    async function fetchQuote() {
+      const url = "https://thingproxy.freeboard.io/fetch/https://api.quotable.io/random";
 
-<script>
-  function fetchQuote() {
-    fetch("https://favqs.com/api/qotd")
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("quote").textContent = `"${data.quote.body}"`;
-        document.getElementById("author").textContent = `— ${data.quote.author}`;
-      })
-      .catch(err => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        document.getElementById("quote").textContent = `"${data.content}"`;
+        document.getElementById("author").textContent = `— ${data.author}`;
+      } catch (err) {
         document.getElementById("quote").textContent = "Failed to load quote.";
-        console.error(err);
-      });
-  }
+        document.getElementById("author").textContent = "";
+        console.error("Fetch error:", err);
+      }
+    }
 
-  fetchQuote();
-  // Optional: refresh every 5 minutes
-  // setInterval(fetchQuote, 300000);
-</script>
-
+    fetchQuote();
+    setInterval(fetchQuote, 10000); // update every 10s
+  </script>
 </body>
 </html>
