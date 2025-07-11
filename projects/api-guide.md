@@ -50,7 +50,7 @@ We'll use Luke Peavey's '[Quotable API](https://github.com/lukePeavey/quotable)'
   <body>
     <h1>Random Quote</h1>
     <blockquote id="quote"></blockquote>
-    <cite id="authot"></cite>
+    <cite id="author"></cite>
 
     <script src="script.js"></script>
   </body>
