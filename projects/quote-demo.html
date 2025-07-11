@@ -2,47 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Random Quote from Quotable</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 2em;
-        max-width: 600px;
-        margin: auto;
-      }
-      #quote {
-        font-size: 1.5em;
-        font-style: italic;
-        margin-bottom: 1em;
-      }
-      #author {
-        text-align: right;
-        font-size: 1em;
-        color: #555;
-      }
-    </style>
+    <title>Quote Debug Test</title>
   </head>
   <body>
-    <h1>Random Quote (via publicapi.dev)</h1>
+    <h1>Testing Quote API</h1>
     <div id="quote">Loading...</div>
     <div id="author"></div>
 
     <script>
-      async function fetchQuote() {
-        try {
-          const res = await fetch("https://publicapi.dev/api/quotable");
-          const data = await res.json();
-          document.getElementById("quote").textContent = `"${data.content}"`;
-          document.getElementById("author").textContent = `— ${data.author}`;
-        } catch (err) {
-          console.error("Quote fetch failed:", err);
+      fetch("https://publicapi.dev/api/quotable")
+        .then(res => {
+          if (!res.ok) throw new Error("Network response was not ok");
+          return res.json();
+        })
+        .then(data => {
+          document.getElementById("quote").textContent = data.content || "No quote received.";
+          document.getElementById("author").textContent = data.author ? "— " + data.author : "";
+        })
+        .catch(err => {
           document.getElementById("quote").textContent = "Failed to load quote.";
           document.getElementById("author").textContent = "";
-        }
-      }
-
-      fetchQuote();
-      setInterval(fetchQuote, 10000); // change every 10 seconds
+          console.error("Error:", err);
+        });
     </script>
   </body>
 </html>
