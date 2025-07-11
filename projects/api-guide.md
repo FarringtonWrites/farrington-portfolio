@@ -14,6 +14,9 @@
 
 ## Choosing the Right API Type
 Different APIs are suited for different cases:
+
+<div style="overflow-x: auto;">
+  
 | API TYPE | BEST FOR | PROS | CONS |
 |----------|----------|------|------|
 | **REST** |General-purpose web services | Simple, widely used, easy to cache | Can be over-fetching or under-fetching data |
@@ -21,6 +24,8 @@ Different APIs are suited for different cases:
 | **SOAP**   | Enterprise-level applications (banking, healthcare) | Strong standards, built-in security | Verbose, less flexible, XML-only |
 | **gRPC**   | High-performance microservices | Fast, supports streaming, uses Protobuf | Not human-readable, harder to test/debug |
 | **WebSockets** | Real-time apps (chat, live data feeds) | Bi-directional communication | More complex state management |
+
+</div>
 
 > In general:  
 > - Use **REST** if you're building a typical web app and want simplicity.  
