@@ -27,3 +27,40 @@ Different APIs are suited for different cases:
 > - Use **GraphQL** if clients need to control the shape of the data.  
 > - Use **SOAP** only if working with legacy or enterprise systems that require it.  
 > - Use **gRPC** or **WebSockets** for high-performance, low-latency needs.
+
+## Example: Using an API in a Website
+
+To bring an API into your website, you'll need JavaScript (or a framework) to send a request and display the data in your HTML.
+
+### Example 1: Displaying Quote of the Day
+
+We'll use Luke Peavey's 'Quotable API' [Quotable API](https://github.com/lukePeavey/quotable)
+
+### HTML
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Quote of the Day</title>
+  </head>
+  <body>
+    <h1>Random Quote</h1>
+    <blockquote id="quote"></blockquote>
+    <cite id="authot"></cite>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+```
+
+# JavaScript
+```JavaScript
+fetch("https://api.quotable.io/random?tags=literature")
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("quote").innerText = `"${data.content}"`;
+    document.getElementById("author").innerText = `— ${data.author}`;
+  })
+  .catch(error => console.error("Error fetching quote:", error));
+```
