@@ -16,6 +16,7 @@
 Different APIs are suited for different cases:
 
 | API TYPE | BEST FOR | PROS | CONS |
+|----------|----------|------|------|
 | **REST** |General-purpose web services | Simple, widely used, easy to cache | Can be over-fetching or under-fetching data |
 | **GraphQL**| Front-end-heavy applications with flexible data needs | Clients choose exact data shape | More complex setup and tooling |
 | **SOAP**   | Enterprise-level applications (banking, healthcare) | Strong standards, built-in security | Verbose, less flexible, XML-only |
