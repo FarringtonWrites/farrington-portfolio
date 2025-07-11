@@ -11,6 +11,7 @@
       padding: 2em;
       text-align: center;
     }
+
     #quote-box {
       background: white;
       padding: 2em;
@@ -18,39 +19,40 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: inline-block;
       max-width: 600px;
+      margin-bottom: 2em;
     }
+
     #quote {
       font-size: 1.5em;
       margin-bottom: 1em;
     }
+
     #author {
       font-style: italic;
       color: #555;
     }
-    nav {
-      background: #333;
+
+    button {
+      padding: 0.5em 1em;
+      background-color: #0077cc;
       color: white;
-      padding: 1em;
-      text-align: left;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+    button:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <a href="https://farringtonwrites.github.io/farrington-portfolio/">← Back to GitHub Portfolio</a>
-  </nav>
-  
   <div id="quote-box">
     <div id="quote">Loading...</div>
     <div id="author"></div>
   </div>
+
+  <button onclick="history.back()">Back</button>
 
   <script>
     async function fetchQuote() {
@@ -60,13 +62,13 @@
         document.getElementById('quote').textContent = `"${data.content}"`;
         document.getElementById('author').textContent = `– ${data.author}`;
       } catch (err) {
-        document.getElementById('quote').textContent = 'Failed to load quote.';
-        document.getElementById('author').textContent = '';
+        document.getElementById('quote').textContent = '"Stay curious."';
+        document.getElementById('author').textContent = '– Default Quote';
       }
     }
 
-    fetchQuote(); // initial load
-    setInterval(fetchQuote, 30000); // refresh every 30 seconds
+    fetchQuote();
+    setInterval(fetchQuote, 30000);
   </script>
 </body>
 </html>
