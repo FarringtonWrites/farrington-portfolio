@@ -55,7 +55,7 @@ We'll use Luke Peavey's 'Quotable API' [Quotable API](https://github.com/lukePea
 </html>
 ```
 
-# JavaScript
+### JavaScript
 ```JavaScript
 fetch("https://api.quotable.io/random?tags=literature")
   .then(response => response.json())
