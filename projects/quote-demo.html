@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Random Quote</title>
+    <title>Random Quote (Quotable API)</title>
     <style>
       body {
         font-family: sans-serif;
@@ -13,30 +13,34 @@
       #quote {
         font-size: 1.5em;
         font-style: italic;
-        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      #author {
+        text-align: right;
+        font-size: 1em;
+        color: #555;
       }
     </style>
   </head>
   <body>
-    <h1>Random Quote</h1>
+    <h1>Random Quote from Quotable</h1>
     <div id="quote">Loading...</div>
+    <div id="author"></div>
 
     <script>
-      const quotes = [
-        "Stay hungry, stay foolish.",
-        "Simplicity is the ultimate sophistication.",
-        "The only way to do great work is to love what you do.",
-        "First, solve the problem. Then, write the code.",
-        "Code is poetry."
-      ];
-
-      function showRandomQuote() {
-        const random = quotes[Math.floor(Math.random() * quotes.length)];
-        document.getElementById("quote").textContent = random;
+      async function fetchQuote() {
+        try {
+          const res = await fetch("https://api.quotable.io/random");
+          const data = await res.json();
+          document.getElementById("quote").textContent = `"${data.content}"`;
+          document.getElementById("author").textContent = `— ${data.author}`;
+        } catch (err) {
+          document.getElementById("quote").textContent = "Failed to load quote.";
+        }
       }
 
-      showRandomQuote();
-      setInterval(showRandomQuote, 10000);
+      fetchQuote();
+      setInterval(fetchQuote, 10000); // update every 10 seconds
     </script>
   </body>
 </html>
