@@ -67,5 +67,6 @@ fetch("https://api.quotable.io/random?tags=literature")
   })
   .catch(error => console.error("Error fetching quote:", error));
 ```
+### DEMO
 Want to see a live quote example using the instructions from this guide?
 👉 [Click here to view it in action](quote-demo.html)
