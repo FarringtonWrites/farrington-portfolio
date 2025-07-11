@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Quote</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2em;
+        max-width: 600px;
+        margin: auto;
+      }
+      #quote {
+        font-size: 1.5em;
+        font-style: italic;
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Quote</h1>
+    <div id="quote">Loading...</div>
+
+    <script>
+      const quotes = [
+        "Stay hungry, stay foolish.",
+        "Simplicity is the ultimate sophistication.",
+        "The only way to do great work is to love what you do.",
+        "First, solve the problem. Then, write the code.",
+        "Code is poetry."
+      ];
+
+      function showRandomQuote() {
+        const random = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById("quote").textContent = random;
+      }
+
+      showRandomQuote();
+      setInterval(showRandomQuote, 10000);
+    </script>
+  </body>
+</html>
