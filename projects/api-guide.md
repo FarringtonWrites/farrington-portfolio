@@ -37,7 +37,7 @@ To bring an API into your website, you'll need JavaScript (or a framework) to se
 
 ### Example: Displaying Quote of the Day
 
-We'll use Luke Peavey's 'Quotable API' [Quotable API](https://github.com/lukePeavey/quotable)
+We'll use Luke Peavey's '[Quotable API](https://github.com/lukePeavey/quotable)'
 
 ### HTML
 
