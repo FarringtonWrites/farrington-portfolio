@@ -72,7 +72,7 @@ Want to see a live quote example using the instructions from this guide?
 👉 [Click here to view it in action](quote-demo.html)
 
 <iframe 
-  src="projects/quote-demo.html" 
+  src="https://farringtonwrites.github.io/farrington-portfolio/projects/quote-demo.html" 
   width="100%" 
   height="400" 
   style="border: none; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
