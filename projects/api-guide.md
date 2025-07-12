@@ -93,7 +93,7 @@ fetchQuote();
 </iframe>
 
 ## API Keys
-If you look closely at our example, you’ll notice that we had to include a special line in our JavaScript:
+You may notice that in our example we include a special line in our JavaScript:
 
 ```JavaScript
 headers: { 'X-Api-Key': 'YOUR_API_KEY_HERE' }
