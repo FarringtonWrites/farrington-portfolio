@@ -41,34 +41,38 @@
       background-color: #005f99;
     }
   </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <div id="quote-box">
     <div id="quote">Loading...</div>
     <div id="author"></div>
-    <button id="refresh-btn" onclick="fetchQuote()">Refresh Quote</button>
+    <button id="refresh-btn">Refresh Quote</button>
   </div>
 
-<script>
-  async function fetchQuote() {
-    const url = "https://api.api-ninjas.com/v1/quotes?category=life";
-
-    try {
-      const res = await fetch(url, {
-        headers: { "X-Api-Key": "wZx5yx1ze5PwOkznMiEyjQ==yvELHLMLbLSm6zGr" }
+  <script>
+    function fetchQuote() {
+      $.ajax({
+        method: 'GET',
+        url: 'https://api.api-ninjas.com/v1/quotes?category=life',
+        headers: { 'X-Api-Key': 'wZx5yx1ze5PwOkznMiEyjQ==yvELHLMLbLSm6zGr' },
+        contentType: 'application/json',
+        success: function(result) {
+          $('#quote').text(`"${result[0].quote}"`);
+          $('#author').text(`— ${result[0].author}`);
+        },
+        error: function(jqXHR) {
+          $('#quote').text("Failed to load quote.");
+          $('#author').text('');
+          console.error('Error:', jqXHR.responseText);
+        }
       });
-      const data = await res.json();
-      document.getElementById("quote").textContent = `"${data[0].quote}"`;
-      document.getElementById("author").textContent = `— ${data[0].author}`;
-    } catch (err) {
-      document.getElementById("quote").textContent = "Failed to load quote.";
-      document.getElementById("author").textContent = "";
-      console.error("Fetch error:", err);
     }
-  }
 
-  fetchQuote();
-  setInterval(fetchQuote, 10000); // update every 10s
-</script>
+    fetchQuote();
+    setInterval(fetchQuote, 10000);
+
+    $('#refresh-btn').on('click', fetchQuote);
+  </script>
 </body>
 </html>
