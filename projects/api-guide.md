@@ -40,6 +40,7 @@ To bring an API into your website, you'll need JavaScript (or a framework) to se
 We'll use Luke Peavey's '[Quotable API](https://github.com/lukePeavey/quotable)'
 
 ### HTML
+Create a basic container that links to your JavaScript file:
 
 ```html
 <!DOCTYPE html>
@@ -58,6 +59,8 @@ We'll use Luke Peavey's '[Quotable API](https://github.com/lukePeavey/quotable)'
 ```
 
 ### JavaScript
+Add the following code to a file named script.js in the same folder:
+
 ```JavaScript
 fetch("https://api.quotable.io/random?tags=literature")
   .then(response => response.json())
@@ -67,14 +70,11 @@ fetch("https://api.quotable.io/random?tags=literature")
   })
   .catch(error => console.error("Error fetching quote:", error));
 ```
-**DEMO**  
-👉 [Click here to view it in action](https://farringtonwrites.github.io/farrington-portfolio/projects/quote-demo.html)
+**DEMO** 
 
-{% if jekyll.environment == "production" %}
 <iframe src="https://farringtonwrites.github.io/farrington-portfolio/projects/quote-demo.html"
         width="100%" height="400"
         style="border: none; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
 </iframe>
-{% endif %}
 
 
