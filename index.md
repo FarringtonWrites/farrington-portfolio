@@ -1,7 +1,5 @@
 # Technical Writing Portfolio
 
-Welcome! Below are samples of my work:
+Welcome!
 
-- [API Quickstart Guide](projects/api-guide.md)
-- [Software How-To Manual](projects/software-manual.md)
-- [Troubleshooting Guide](projects/faq.md)
+[Home](../index.md) | [API Basics](api-guide.md) | [Software Manual](software-manual.md) | [FAQ](faq.md)
