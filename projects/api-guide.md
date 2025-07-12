@@ -92,4 +92,18 @@ fetchQuote();
         style="border: none; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
 </iframe>
 
+## API Keys
+If you look closely at our example, you’ll notice that we had to include a special line in our JavaScript:
+
+```JavaScript
+headers: { 'X-Api-Key': 'YOUR_API_KEY_HERE' }
+```
+This is an API key — a unique identifier that tells the API who you are.
+
+### Why Do APIs Require Keys?
+1. **Usage Tracking:** They allow the provider to track requests.
+2. **Rate Limiting:** They can prevent abuse by limiting number of requests per user.
+3. **Monetization:** The key can be used to grant access to premium/paid subscription levels.
+   > - Requiring a key is not universal. Some open or public APIs (like quotable.io) allow limited use without a key. 
+
 
