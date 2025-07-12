@@ -1,2 +1,2 @@
-# The Creative and the Technical by Farrington
-A collection of writing samples, technical and otherwise, by Farrington!
+# Syntax & Story	
+A collection of writing samples by Noah Farrington
