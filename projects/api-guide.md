@@ -104,6 +104,6 @@ This is an API key — a unique identifier that tells the API who you are.
 1. **Usage Tracking:** They allow the provider to track requests.
 2. **Rate Limiting:** They can prevent abuse by limiting number of requests per user.
 3. **Monetization:** The key can be used to grant access to premium/paid subscription levels.
-   > - Requiring a key is not universal. Some open or public APIs (like quotable.io) allow limited use without a key. 
+> Requiring a key is not universal. Some open or public APIs (like quotable.io) allow limited use without a key. 
 
 
