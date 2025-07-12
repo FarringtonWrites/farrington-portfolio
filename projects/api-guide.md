@@ -4,7 +4,7 @@
 
 ## What is an API?
 
-**API** stands for *Application Programming Interface*. They allow different software applications to communicate and provide access to information without requiring knowledge of the software’s inner workings.
+**API** stands for *Application Programming Interface*. It allows different software applications to communicate and access information without needing to understand each other’s internal workings.
 
 ---
 
