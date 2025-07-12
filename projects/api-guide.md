@@ -37,24 +37,25 @@ To bring an API into your website, you'll need JavaScript (or a framework) to se
 
 ### Example: Displaying Quote of the Day
 
-We'll use Luke Peavey's '[Quotable API](https://github.com/lukePeavey/quotable)'
+We'll use API Ninjas' '[Quotes API](https://api-ninjas.com/api/quotes)'
 
 ### HTML
-Create a basic container that links to your JavaScript file:
+Create a basic container that links to jQuery and includes your script:
 
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Random Quote of the Day</title>
-  </head>
-  <body>
-    <h1>Random Quote</h1>
-    <blockquote id="quote"></blockquote>
-    <cite id="author"></cite>
+<head>
+  <title>Random Quote of the Day</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Random Quote</h1>
+  <blockquote id="quote"></blockquote>
+  <cite id="author"></cite>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
 ```
 
@@ -62,13 +63,27 @@ Create a basic container that links to your JavaScript file:
 Add the following code to a file named script.js in the same folder:
 
 ```JavaScript
-fetch("https://api.quotable.io/random?tags=literature")
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById("quote").innerText = `"${data.content}"`;
-    document.getElementById("author").innerText = `— ${data.author}`;
-  })
-  .catch(error => console.error("Error fetching quote:", error));
+function fetchQuote() {
+  $.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes',
+    headers: {
+      'X-Api-Key': 'YOUR_API_KEY_HERE'
+    },
+    contentType: 'application/json',
+    success: function(result) {
+      document.getElementById("quote").textContent = `"${result[0].quote}"`;
+      document.getElementById("author").textContent = `— ${result[0].author}`;
+    },
+    error: function(jqXHR) {
+      document.getElementById("quote").textContent = "Failed to load quote.";
+      document.getElementById("author").textContent = "";
+      console.error("Error:", jqXHR.responseText);
+    }
+  });
+}
+
+fetchQuote();
 ```
 **DEMO** 
 
