@@ -51,13 +51,15 @@
 
 <script>
   async function fetchQuote() {
-    const url = "https://api.quotable.io/random?tags=literature";
+    const url = "https://api.api-ninjas.com/v1/quotes?category=life";
 
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: { "X-Api-Key": "YOUR_API_KEY_HERE" }
+      });
       const data = await res.json();
-      document.getElementById("quote").textContent = `"${data.content}"`;
-      document.getElementById("author").textContent = `— ${data.author}`;
+      document.getElementById("quote").textContent = `"${data[0].quote}"`;
+      document.getElementById("author").textContent = `— ${data[0].author}`;
     } catch (err) {
       document.getElementById("quote").textContent = "Failed to load quote.";
       document.getElementById("author").textContent = "";
